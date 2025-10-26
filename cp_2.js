@@ -25,3 +25,16 @@ function fetchProductsThen() {
         handleError(err);
     });
 }
+
+//step 4 async/await with try/catch
+
+async function fetchProductsASync() {
+    try {
+           const res = await fetch(API_URL);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const products = await res.json();
+    displayProducts(products);
+  } catch (error) {
+    handleError(error);
+    }
+}
